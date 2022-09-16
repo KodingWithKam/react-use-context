@@ -1,6 +1,8 @@
-# React Use Context
+# React Context
 - React context provides data to components no matter how deep in the component tree.
 - Context is used to manage global data (state, theme, settings, etc.)
+- React context helps us avoid the problem of props drilling.
+- Props drilling is a term to describe when you pass props down multiple levels to a nested component, through components that don't need it.
 
 ## How to use the context (3 steps)
 - Create the context
