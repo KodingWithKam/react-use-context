@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react'
 import './App.css';
+import AuthProvider from './providers/authProvider';
+import Auth from './components/Auth'
 
-function App() {
+const App = () => {
+  //using the state to dynamicallly pass the values to the context
+
+  const [authstatus, setauthstatus] = useState(false);
+  const login = () => {
+    setauthstatus(true);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <React.Fragment>
+        <AuthProvider.Provider value={{ status: authstatus, login: login }}>
+          <Auth />
+        </AuthProvider.Provider>
+      </React.Fragment>
   );
-}
+};
 
 export default App;
