@@ -1,3 +1,50 @@
+# React Use Context
+- React context provides data to components no matter how deep in the component tree.
+- Context is used to manage global data (state, theme, settings, etc.)
+
+## How to use the context (3 steps)
+- Create the context
+- Provide the context
+- Consume the context
+
+### Step 1 (Create Context)
+```
+// The built-in factory function createContext(default) creates a context instance:
+
+import { createContext } from 'react';
+const Context = createContext('Default Value');
+
+// The factory function accepts one optional argument: the default value.
+```
+
+### Step 2 (Provide Context)
+```
+// Context.Provider component available on the context instance is used to provide the context to its child components, no matter how deep they are.
+
+// To set the value of context use the value prop available on the <Context.Provider value={value} />:
+
+function Main() {
+  const value = 'My Context Value';
+  return (
+    <Context.Provider value={value}>
+      <MyComponent />
+    </Context.Provider>
+  );
+}
+
+// Again, what's important here is that all the components that'd like later to consume the context have to be wrapped inside the provider component.
+```
+
+### Step 3 (Consume Context)
+```
+import { useContext } from 'react';
+
+function MyComponent() {
+  const value = useContext(Context);
+  return <span>{value}</span>;
+}
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
